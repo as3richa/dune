@@ -127,3 +127,18 @@ pub mod dune {
         }
     }
 }
+
+#[cfg(test)]
+mod tests {
+    use crate::dune::MinHeap;
+
+    #[test]
+    fn with_capacity_initializes_with_capacity() {
+        for cap in 0..4096 {
+            let heap = MinHeap::<()>::with_capacity(cap);
+            assert!(heap.len() == 0);
+            assert!(heap.is_empty());
+            assert!(heap.capacity() >= cap);
+        }
+    }
+}
